@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_memmove_b.c                                   .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/10/09 09:43:55 by siferrar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/16 13:58:41 by siferrar    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <string.h>
+#include "../includes/s_memove.h"
+
+static size_t	ft_strlen(const char *s)
+{
+	size_t length;
+
+	length = 0;
+	while (s[length])
+		length++;
+	return (length + 1);
+}
+
+static	int	ft_checkptr(t_mmv b)
+{
+	if (b.src >= b.dst && b.src <= b.dst + b.dlen)
+		return (1);
+	else if (b.src + b.slen >= b.dst && b.src + b.slen <= b.dst + b.dlen)
+		return (0);
+	else
+		return ((int)NULL);
+}
+
+void	ft_init_brain(t_mmv *b, void *dst, const void *src)
+{
+	(*b).dst = dst;
+	(*b).src = src;
+	(*b).dlen = ft_strlen(dst);
+	(*b).slen = ft_strlen(src);
+}
+
+void		*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t i;
+	t_mmv	b;
+	i = 0;
+	
+	ft_init_brain(&b, dst, src);
+	//printf("&src: %p - length:%lu - end: %p\n&dst: %p - length:%lu - end: %p\n", b.src, b.slen, b.src + b.slen, b.dst, b.dlen, b.dst + b.dlen);
+	//printf("\nptrcheck: %d -", ft_checkptr(b));
+	if (ft_checkptr(b))
+		while (i < b.slen && i < len)
+		{
+			((char*)dst)[i] = ((char*)src)[i];
+			i++;
+		}
+	else
+		while (i < b.slen && i < len)
+		{
+			((char*)dst)[b.dlen - i] = ((char*)src)[b.slen - i];
+			i++;
+		}
+	return (dst);
+}

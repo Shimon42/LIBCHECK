@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 13:40:19 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:53:40 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 15:41:10 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,9 +25,10 @@ int		ft_atoi(const char *str)
 	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' || str[i] == '\r'
 		|| str[i] == '\f' || str[i] == ' ')
 		i++;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')

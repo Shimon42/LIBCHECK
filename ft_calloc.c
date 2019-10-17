@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 12:46:04 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:50:54 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 15:52:54 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,14 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
-	void	*obj;
+	void			*obj;
+	unsigned char	*pobj;
 
-	i = -1;
 	if ((obj = malloc(count * size)) != NULL)
-		while (i++ < (int)count)
-			((char*)obj)[i] = '\0';
+	{
+		pobj = obj;
+		while (count--)
+			*pobj++ = '\0';
+	}
 	return (obj);
 }

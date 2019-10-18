@@ -6,14 +6,14 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 21:13:42 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 22:06:05 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 14:16:34 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char			*ft_strrchr(const char *s, int c)
 {
 	int	iter;
 
@@ -28,7 +28,7 @@ char	*ft_strrchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strchr(const char *s, int c)
+char			*ft_strchr(const char *s, int c)
 {
 	int i;
 
@@ -44,7 +44,6 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)NULL);
 }
 
-
 static size_t	ft_trmlen(char const *s, char const *set, int dir)
 {
 	size_t len;
@@ -57,7 +56,7 @@ static size_t	ft_trmlen(char const *s, char const *set, int dir)
 			len++;
 	else
 	{
-		while (ft_strrchr(set, s[strlen - len - 1]) != NULL && len < strlen)
+		while (ft_strrchr(set, s[strlen - len - 1]) != NULL && len < strlen - 1)
 			len++;
 	}
 	return (len);
@@ -89,4 +88,3 @@ char			*ft_strtrim(char const *s1, char const *set)
 	}
 	return (trmd);
 }
-

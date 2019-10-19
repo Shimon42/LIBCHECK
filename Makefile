@@ -33,13 +33,18 @@ SRCS	=	ft_atoi.c \
 			ft_strtrim.c \
 			ft_substr.c \
 			ft_tolower.c \
-			ft_toupper.c
+			ft_toupper.c \
+			ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c	
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 OBJS		= ${SRCS:.c=.o}
-INCLUDES = libft.h
+INCLUDES = libft.h \
+			libbonus.h
 
 all:		$(NAME) $(INCLUDES)
 
@@ -47,6 +52,7 @@ $(NAME): 	$(OBJS) $(INCLUDES)
 			ar rc $(NAME) $(OBJS)
 
 $(OBJS):	$(INCLUDES)
+
 
 clean:		
 			${RM} $(OBJS)

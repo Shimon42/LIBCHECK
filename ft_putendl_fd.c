@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 21:12:46 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:51:45 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/19 01:10:49 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,11 +15,11 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int length;
+	size_t length;
 
 	length = 0;
-	while (s[length] != '\0')
+	while (s[length] != 0)
 		length++;
 	write(fd, s, length);
-	write(fd, &"\n", 1);
+	write(fd, "\n", 1);
 }

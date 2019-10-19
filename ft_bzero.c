@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 09:07:35 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:50:52 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/19 01:02:14 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,6 @@ void	*ft_bzero(void *s, size_t n)
 
 	i = 0;
 	while (i < n)
-		((char*)s)[i++] = '\0';
+		((char*)s)[i++] = 0;
 	return (s);
 }

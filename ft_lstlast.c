@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memcpy.c                                      .::    .:/ .      .::   */
+/*   ft_lstlast.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/09 09:16:21 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 00:45:32 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/19 02:52:33 by siferrar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/19 03:10:17 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list *ft_lstlast(t_list *lst)
 {
-	int i;
-
-	i = 0;
-	if ((dst == NULL && src == NULL))
-		return (NULL);
-	while (i < (int)n)
-	{
-		((char *)dst)[i] = ((char *)src)[i];
-		i++;
-	}
-	return (dst);
+     while (lst != NULL)
+    {
+        if(lst->next == NULL)
+           break;
+        lst = lst->next;
+    }
+    return (lst);
 }

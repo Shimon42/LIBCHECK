@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 10:50:12 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:51:52 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/19 00:58:09 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,6 +96,8 @@ char			**ft_split(char const *s, char c)
 					b.k++;
 				b.i++;
 			}
+			else
+				free(strs);
 		strs[b.i] = ((char *)NULL);
 	}
 	free(b.partslen);

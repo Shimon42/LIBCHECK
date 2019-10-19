@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 08:57:25 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:51:40 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/19 00:44:48 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,9 +19,6 @@ void	*ft_memset(void *b, int c, size_t len)
 
 	i = 0;
 	while (i < len)
-	{
-		((char*)b)[i] = (char)c;
-		i += sizeof(char);
-	}
+		((char*)b)[i++] = (char)c;
 	return (b);
 }

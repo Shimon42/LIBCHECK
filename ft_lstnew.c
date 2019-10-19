@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memcpy.c                                      .::    .:/ .      .::   */
+/*   ft_lstnew.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/09 09:16:21 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 00:45:32 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/19 01:24:29 by siferrar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/19 02:29:00 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libbonus.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list *ft_lstnew(void *content)
 {
-	int i;
-
-	i = 0;
-	if ((dst == NULL && src == NULL))
-		return (NULL);
-	while (i < (int)n)
-	{
-		((char *)dst)[i] = ((char *)src)[i];
-		i++;
-	}
-	return (dst);
+    t_list *newlst; 
+    if ((newlst = malloc(sizeof(t_list))) != NULL)
+    {
+        newlst->content = content;
+        newlst->next = NULL;
+    }
+    return (newlst);
 }

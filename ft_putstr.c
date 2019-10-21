@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   libbonus.h                                       .::    .:/ .      .::   */
+/*   ft_putstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/11 12:00:43 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 02:33:03 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/21 16:36:25 by siferrar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/21 17:53:31 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef LIBBONUS_H
-# define LIBBONUS_H
-
 #include "libft.h"
 
+void	ft_putstr(char *str)
+{
+	size_t len;
 
-#endif
+	len = ft_strlen(str);
+	write(1, str, len);
+}

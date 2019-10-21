@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 10:50:12 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 00:58:09 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 16:09:50 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,23 +63,12 @@ static	int		count_parts(const char *str, char sep)
 	return (count);
 }
 
-static	t_split	init_brain(t_split *brain, const char *s, char c)
+static char		**treat_split(t_split *brain, const char *s, char c, char
+**strs)
 {
-	(*brain).i = 0;
-	(*brain).j = 0;
-	(*brain).k = 0;
-	(*brain).nbrparts = count_parts(s, c);
-	(*brain).partslen = part_length((*brain).nbrparts, s, c);
-	return ((*brain));
-}
+	t_split b;
 
-char			**ft_split(char const *s, char c)
-{
-	t_split	b;
-	char	**strs;
-
-	strs = NULL;
-	init_brain(&b, s, c);
+	b = *brain;
 	if ((strs = malloc((b.nbrparts + 1) * sizeof(char *))) != NULL)
 	{
 		while (b.i < b.nbrparts)
@@ -100,6 +89,21 @@ char			**ft_split(char const *s, char c)
 				free(strs);
 		strs[b.i] = ((char *)NULL);
 	}
+	return (strs);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	t_split	b;
+	char	**strs;
+
+	b.i = 0;
+	b.j = 0;
+	b.k = 0;
+	b.nbrparts = count_parts(s, c);
+	b.partslen = part_length(b.nbrparts, s, c);
+	strs = NULL;
+	strs = treat_split(&b, s, c, strs);
 	free(b.partslen);
 	return (strs);
 }

@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 21:13:42 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 00:50:13 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 16:01:56 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,8 @@ char			*ft_strtrim(char const *s1, char const *set)
 	size_t	l;
 
 	i = 0;
+	if (!s1 || !set)
+		return (ft_calloc(1, 1));
 	l = ft_strlen(s1);
 	trmd = "";
 	trmstrt = ft_trmlen(s1, set, 1);

@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 03:03:48 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 15:25:01 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 16:37:57 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,13 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *newlst)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list *tmp;
 
-	tmp = *alst;
-	tmp2 = *alst;
-	while (tmp)
-		tmp = tmp->next;
-	tmp = ft_lstnew(newlst);
+	if (*alst)
+	{
+		tmp = ft_lstlast(*alst);
+		tmp->next = newlst;
+	}
+	else
+		*alst = newlst;
 }

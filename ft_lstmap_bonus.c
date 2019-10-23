@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_substr.c                                      .::    .:/ .      .::   */
+/*   ft_lstmap_bonus.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/09 13:03:23 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 15:59:48 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/23 16:59:39 by siferrar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/23 17:25:07 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	endlength;
-	size_t	i;
-	char	*obj;
+	t_list *new;
+	t_list **tmp;
 
-	i = 0;
-	endlength = 0;
-	if (s && ft_strlen(s) >= start)
+	while (lst)
 	{
-		i = start;
-		while (s[i++] != '\0' && endlength < len)
-			endlength++;
-		i = 0;
-		if ((obj = malloc((endlength + 1) * sizeof(char))) != NULL)
+		new = ft_lstnew(lst);
+		if (tmp == NULL)
+			tmp = &new;
+		if (new == NULL)
 		{
-			while (i < endlength)
-			{
-				obj[i] = s[start + i];
-				i++;
-			}
-			obj[i] = '\0';
-			return (obj);
+			del(new);
+			break ;
 		}
+		f(new->content);
+		new = new->next;
+		lst = lst->next;
 	}
-	return (ft_calloc(1, 1));
+	return (*tmp);
 }

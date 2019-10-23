@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 09:50:19 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 16:26:04 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 16:10:17 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t i;
 
 	i = 0;
-	if (size != 0)
+	if (size && dst && src)
 	{
 		while (src[i] != '\0' && i < size - 1)
 		{
@@ -29,7 +29,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		while (src[i] != '\0')
 			i++;
 	}
-	else
+	else if (src)
 		return (ft_strlen(src));
 	return (i);
 }

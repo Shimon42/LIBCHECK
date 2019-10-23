@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/21 16:36:25 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 17:53:31 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 16:38:38 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,9 @@ void	ft_putstr(char *str)
 {
 	size_t len;
 
-	len = ft_strlen(str);
-	write(1, str, len);
+	if (str)
+	{
+		len = ft_strlen(str);
+		write(1, str, len);
+	}
 }

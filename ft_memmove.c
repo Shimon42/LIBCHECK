@@ -6,40 +6,32 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 09:43:55 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 15:30:01 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 15:53:32 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		ft_checkptr(const void *dst, const void *src)
-{
-	size_t srclen;
-
-	srclen = ft_strlen(src);
-	if (dst > src && dst <= src + srclen)
-		return (1);
-	else
-		return (0);
-}
-
-void			*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char		*pdst;
 	unsigned const char	*psrc;
+	size_t				i;
 
-	pdst = dst;
-	psrc = src;
-	if (ft_checkptr(dst, src))
+	i = 0;
+	pdst = (unsigned char*)dst;
+	psrc = (unsigned char*)src;
+	if (psrc && pdst)
 	{
-		pdst += len;
-		psrc += len;
-		while (len--)
-			*--pdst = *--psrc;
+		if (psrc < pdst)
+			while (++i <= len)
+				pdst[len - i] = psrc[len - i];
+		else
+			while (len-- > 0)
+				*(pdst++) = *(psrc++);
 	}
 	else
-		while (len--)
-			*pdst++ = *psrc++;
+		return (ft_memcpy(pdst, psrc, len));
 	return (dst);
 }

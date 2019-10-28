@@ -6,37 +6,26 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 12:28:52 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:54:38 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 17:59:41 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_nbrlen(int n)
+static size_t	ft_nbrlen(long n)
 {
-	long	i;
-	int		iter;
+	long	iter;
 
 	iter = 0;
-	i = 0;
 	if (n < 0)
-		while (i >= n)
-		{
-			i = i * 10;
-			if (i == 0)
-				i = -1;
-			iter++;
-		}
-	else
-		while (i <= n)
-		{
-			i = i * 10;
-			if (i == 0)
-				i = 1;
-			iter++;
-		}
-	return (iter);
+		n = -n;
+	while (n > 0)
+	{
+		n /= 10;
+		iter++;
+	}
+	return (iter + 1);
 }
 
 static	char	*ft_strrev(char *str)
@@ -65,12 +54,12 @@ char			*ft_itoa(int n)
 
 	sign = 1;
 	i = 0;
-	if ((str = malloc((ft_nbrlen(n) + 1) * sizeof(char))) != NULL)
+	if (n == 0)
+		return (ft_strdup("0"));
+	if ((str = ft_calloc((ft_nbrlen(n) + 1), sizeof(char))) != NULL)
 	{
 		if (n < 0)
 			sign = -1;
-		else if (n == 0)
-			return ((str = "0"));
 		while (n != 0)
 		{
 			str[i] = (n % 10 > 0 ? ('0' + n % 10) : ('0' + (n % 10 * -1)));
@@ -79,8 +68,7 @@ char			*ft_itoa(int n)
 		}
 		if (sign < 0)
 			str[i++] = '-';
-		str[i] = '\0';
-		str = ft_strrev(str);
+		ft_strrev(str);
 	}
 	return (str);
 }

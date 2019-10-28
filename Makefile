@@ -46,7 +46,7 @@ SRCSBNS	=	ft_lstnew_bonus.c \
 			ft_lstclear_bonus.c
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 RM		= rm -f
 OBJS	= ${SRCS:.c=.o}
 OBJSBNS	= ${SRCSBNS:.c=.o}
@@ -56,6 +56,9 @@ all:		$(NAME) $(INCLUDES)
 
 $(NAME): 	$(OBJS) $(INCLUDES)
 			ar rc $(NAME) $(OBJS)
+
+compil:		all
+			$(CC) $(CCFLAGS) $(SRCS) main.c -i libft.a
 
 $(OBJS):	$(INCLUDES)
 

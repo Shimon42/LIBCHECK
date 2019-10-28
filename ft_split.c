@@ -6,18 +6,23 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 10:50:12 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 16:02:49 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 18:05:20 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define SKIP(value, tester) (value == tester ? 1 : 0)
 
-static	int		ft_is_skip(char totest, char c)
+static char		**free_strs(char **strs, int size)
 {
-	if (totest == c)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (i < size)
+		free(strs[i++]);
+	free(strs);
+	return (NULL);
 }
 
 static	int		*part_length(int parts, const char *str, char sep)
@@ -32,10 +37,10 @@ static	int		*part_length(int parts, const char *str, char sep)
 	if ((tab = malloc((parts + 2) * sizeof(int))) != NULL)
 		while (str[i] != '\0')
 		{
-			while (ft_is_skip(str[i], sep) && str[i] != '\0')
+			while (SKIP(str[i], sep) && str[i] != '\0')
 				i++;
 			tab[++itab] = 0;
-			while (!ft_is_skip(str[i], sep) && str[i] != '\0')
+			while (!SKIP(str[i], sep) && str[i] != '\0')
 			{
 				tab[itab]++;
 				i++;
@@ -53,11 +58,11 @@ static	int		count_parts(const char *str, char sep)
 	count = 0;
 	while (str[i] != '\0')
 	{
-		while (ft_is_skip(str[i], sep) && str[i] != '\0')
+		while (SKIP(str[i], sep) && str[i] != '\0')
 			i++;
-		if (!ft_is_skip(str[i], sep) && str[i] != '\0')
+		if (!SKIP(str[i], sep) && str[i] != '\0')
 			count++;
-		while (!ft_is_skip(str[i], sep) && str[i] != '\0')
+		while (!SKIP(str[i], sep) && str[i] != '\0')
 			i++;
 	}
 	return (count);
@@ -76,17 +81,17 @@ static char		**treat_split(t_split *brain, const char *s, char c, char
 				!= NULL)
 			{
 				b.j = 0;
-				while (ft_is_skip(s[b.k], c) && s[b.k] != '\0')
+				while (SKIP(s[b.k], c) && s[b.k] != '\0')
 					b.k++;
 				while ((b.partslen[b.i]--) > 0)
 					strs[b.i][b.j++] = s[b.k++];
 				strs[b.i][b.j] = '\0';
-				while (ft_is_skip(s[b.k], c) && s[b.k] != '\0')
+				while (SKIP(s[b.k], c) && s[b.k] != '\0')
 					b.k++;
 				b.i++;
 			}
 			else
-				free(strs);
+				return (free_strs(strs, b.i));
 		strs[b.i] = ((char *)NULL);
 	}
 	return (strs);
@@ -98,7 +103,7 @@ char			**ft_split(char const *s, char c)
 	char	**strs;
 
 	if (!s || !c)
-		return (ft_calloc(1, 1));
+		return (NULL);
 	b.i = 0;
 	b.j = 0;
 	b.k = 0;

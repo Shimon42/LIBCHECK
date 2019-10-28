@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 09:25:36 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 00:47:38 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 15:24:35 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,10 @@
 
 void	*ft_memccpy(void *d, const void *s, int c, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	while (i < (int)n)
+	while (i < n)
 	{
 		((unsigned char *)d)[i] = ((unsigned char *)s)[i];
 		if (((unsigned char *)s)[i] == (unsigned char)c)

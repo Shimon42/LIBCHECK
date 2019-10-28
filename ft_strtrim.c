@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 21:13:42 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 16:01:56 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 18:24:54 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,13 +43,11 @@ char			*ft_strtrim(char const *s1, char const *set)
 	if (!s1 || !set)
 		return (ft_calloc(1, 1));
 	l = ft_strlen(s1);
-	trmd = "";
 	trmstrt = ft_trmlen(s1, set, 1);
 	trmend = ft_trmlen(s1, set, -1);
-	if ((trmstrt < l && trmend < l)
+	if (trmstrt < l && trmend < l
 	&& (trmd = malloc((l - trmstrt - trmend + 1) * sizeof(char))) != NULL)
 	{
-		i = 0;
 		while (trmstrt + i < l - trmend)
 		{
 			trmd[i] = (char)s1[trmstrt + i];
@@ -57,5 +55,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 		}
 		trmd[i] = '\0';
 	}
+	else
+		return (ft_strdup(""));
 	return (trmd);
 }

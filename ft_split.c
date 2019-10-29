@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 10:50:12 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 18:05:20 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 14:34:25 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -102,8 +102,18 @@ char			**ft_split(char const *s, char c)
 	t_split	b;
 	char	**strs;
 
-	if (!s || !c)
-		return (NULL);
+	strs = NULL;
+	if (!s || s[0] == '\0')
+		return (strs);
+	if (!c)
+	{
+		if ((strs = malloc(2 * sizeof(char *))) != NULL)
+		{
+			strs[0] = ft_strdup(s);
+			strs[1] = NULL;
+		}
+		return (strs);
+	}
 	b.i = 0;
 	b.j = 0;
 	b.k = 0;

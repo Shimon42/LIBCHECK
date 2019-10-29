@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/28 14:22:53 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 18:25:32 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 14:06:29 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@ int main(void)
 {
 	
 	int i = 0;
-	char **strs = ft_split("bonjour comment ca va", ' ');
+	char **strs = ft_split("bonjour comment ca va", 0);
 
 	while (strs && strs[i])
 	{

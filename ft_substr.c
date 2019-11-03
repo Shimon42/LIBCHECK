@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 13:03:23 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 14:40:42 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/03 20:49:39 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*obj;
 
-	i = 0;
+	obj = NULL;
 	endlength = 0;
 	if (s && ft_strlen(s) >= start)
 	{
@@ -35,8 +35,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 				i++;
 			}
 			obj[i] = '\0';
-			return (obj);
 		}
 	}
-	return (ft_calloc(1, 1));
+	return (obj);
 }

@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/11 12:00:43 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 17:28:31 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/03 19:25:44 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <strings.h>
+# define SKIP(value, tester) (value == tester ? 1 : 0)
 
 typedef struct		s_split
 {

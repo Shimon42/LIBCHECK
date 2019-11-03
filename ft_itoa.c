@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 12:28:52 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 17:59:41 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/03 20:48:26 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,14 +18,19 @@ static size_t	ft_nbrlen(long n)
 	long	iter;
 
 	iter = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
+	{
 		n = -n;
+		iter++;
+	}
 	while (n > 0)
 	{
 		n /= 10;
 		iter++;
 	}
-	return (iter + 1);
+	return (iter);
 }
 
 static	char	*ft_strrev(char *str)

@@ -6,13 +6,12 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 10:50:12 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 14:34:25 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/03 20:48:48 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-#define SKIP(value, tester) (value == tester ? 1 : 0)
 
 static char		**free_strs(char **strs, int size)
 {
@@ -102,14 +101,14 @@ char			**ft_split(char const *s, char c)
 	t_split	b;
 	char	**strs;
 
-	strs = NULL;
-	if (!s || s[0] == '\0')
-		return (strs);
-	if (!c)
+	if (!c || !s)
 	{
 		if ((strs = malloc(2 * sizeof(char *))) != NULL)
 		{
-			strs[0] = ft_strdup(s);
+			if (s == NULL)
+				strs[0] = (char*)NULL;
+			else
+				strs[0] = ft_strdup(s);
 			strs[1] = NULL;
 		}
 		return (strs);

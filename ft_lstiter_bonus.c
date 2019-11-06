@@ -6,12 +6,12 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/23 16:39:26 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 16:41:24 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 20:52:53 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_bonus.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

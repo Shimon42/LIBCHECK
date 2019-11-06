@@ -43,14 +43,16 @@ SRCSBNS	=	ft_lstnew_bonus.c \
 			ft_lstadd_back_bonus.c \
 			ft_lstiter_bonus.c \
 			ft_lstdelone_bonus.c \
-			ft_lstclear_bonus.c
+			ft_lstclear_bonus.c \
+			ft_lstmap_bonus.c
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g3
 RM		= rm -f
 OBJS	= ${SRCS:.c=.o}
 OBJSBNS	= ${SRCSBNS:.c=.o}
-INCLUDES =	libft.h
+INCLUDES =	libft.h libft_bonus.h
+INCLDBNS =	libft_bonus.h
 
 all:		$(NAME) $(INCLUDES)
 
@@ -60,12 +62,13 @@ $(NAME): 	$(OBJS) $(INCLUDES)
 compil:		all
 			$(CC) $(CCFLAGS) $(SRCS) main.c -i libft.a
 
-$(OBJS):	$(INCLUDES)
 
-bonus:		$(OBJS) $(OBJSBNS) $(INCLUDES)
+bonus:		$(OBJS) $(OBJSBNS) $(INCLUDES) $(INCLDBNS)
 			ar rc $(NAME) $(OBJS) $(OBJSBNS)
 
-$(OBJSBNS):	$(INCLUDES)
+$(OBJS):	$(INCLUDES)
+
+$(OBJSBNS):	$(INCLDBNS)
 
 clean:		
 			${RM} $(OBJS) $(OBJSBNS)

@@ -6,12 +6,12 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 03:03:48 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 16:37:57 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 20:53:05 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_bonus.h"
 
 void	ft_lstadd_back(t_list **alst, t_list *newlst)
 {

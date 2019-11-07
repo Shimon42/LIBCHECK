@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/06 20:38:48 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 21:39:21 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/07 16:35:30 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 
 # include <stdlib.h>
 # include "libft.h"
+
 typedef struct		s_list
 {
 	void			*content;
@@ -29,5 +30,7 @@ void				ft_lstadd_back(t_list **alst, t_list *newlst);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list				*ft_lstmap(t_list *lst,
+								void *(*f)(void *),
+								void (*del)(void *));
 #endif

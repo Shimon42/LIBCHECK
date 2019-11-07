@@ -51,7 +51,7 @@ CFLAGS	= -Wall -Wextra -Werror -g3
 RM		= rm -f
 OBJS	= ${SRCS:.c=.o}
 OBJSBNS	= ${SRCSBNS:.c=.o}
-INCLUDES =	libft.h libft_bonus.h
+INCLUDES =	libft.h
 INCLDBNS =	libft_bonus.h
 
 all:		$(NAME) $(INCLUDES)

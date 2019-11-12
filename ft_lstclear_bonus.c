@@ -6,24 +6,28 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/23 16:48:59 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 16:25:16 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 17:43:04 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *tmp;
+	t_list **tmp;
 
-	if (0 && *lst && del)
-		while (tmp != NULL)
-		{
-			tmp = (*lst)->next;
-			del(*lst);
-			*lst = tmp;
-		}
+	tmp = NULL;
 	if (*lst)
-		free(*lst);
+	{
+		tmp = lst;
+		while (*tmp)
+		{
+			*tmp = (*tmp)->next;
+			ft_lstdelone(*tmp, del);
+			*tmp = (*tmp)->next;
+		}
+		*tmp = NULL;
+	}
+	*lst = NULL;
 }

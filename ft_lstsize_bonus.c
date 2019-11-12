@@ -6,12 +6,12 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 02:37:14 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 20:52:49 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 16:19:22 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

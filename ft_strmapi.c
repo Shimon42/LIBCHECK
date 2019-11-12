@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 20:31:47 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 16:30:17 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 17:04:13 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	char	*newstr;
 
-	if (!f)
+	if (!f && s)
 		return (ft_strdup(s));
 	if (!s)
 		return (ft_strdup(""));

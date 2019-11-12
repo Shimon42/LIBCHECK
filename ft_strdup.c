@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 12:32:31 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 14:23:37 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 17:21:12 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	length = 0;
-	while (s1[length] != '\0')
+	while (s1 && s1[length] != '\0')
 		length++;
 	if ((dup = malloc((length + 1) * sizeof(char))) != NULL)
 	{

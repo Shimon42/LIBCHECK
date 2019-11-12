@@ -52,23 +52,19 @@ RM		= rm -f
 OBJS	= ${SRCS:.c=.o}
 OBJSBNS	= ${SRCSBNS:.c=.o}
 INCLUDES =	libft.h
-INCLDBNS =	libft_bonus.h
+
 
 all:		$(NAME) $(INCLUDES)
 
 $(NAME): 	$(OBJS) $(INCLUDES)
 			ar rc $(NAME) $(OBJS)
 
-compil:		all
-			$(CC) $(CCFLAGS) $(SRCS) main.c -i libft.a
-
-
-bonus:		$(OBJS) $(OBJSBNS) $(INCLUDES) $(INCLDBNS)
+bonus:		$(OBJS) $(OBJSBNS) $(INCLUDES)
 			ar rc $(NAME) $(OBJS) $(OBJSBNS)
 
 $(OBJS):	$(INCLUDES)
 
-$(OBJSBNS):	$(INCLDBNS)
+$(OBJSBNS):	$(INCLUDES)
 
 clean:		
 			${RM} $(OBJS) $(OBJSBNS)
@@ -78,7 +74,4 @@ fclean:		clean
 			
 re:			fclean all
 
-sanitize:	$(OBJS)
-			$(CC) $(CFLAGS) -g3 -fsanitize=address -o $(NAME) $(OBJS)
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

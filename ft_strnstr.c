@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 13:10:54 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 17:52:24 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 18:12:23 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,9 +20,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	j = 0;
-	if (needle[0] != '\0')
+	if (needle && needle[0] != '\0')
 	{
-		if (haystack[i] != '\0')
+		if (haystack && haystack[i] != '\0')
 			while (haystack[i] != '\0' && i < len)
 			{
 				j = 0;

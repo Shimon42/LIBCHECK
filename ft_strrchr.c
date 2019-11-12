@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/07 22:22:17 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 16:57:48 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 17:14:15 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,13 +17,16 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	iter;
 
-	iter = 0;
-	while (s[iter] != '\0')
-		iter++;
-	if (c == '\0')
-		return ((char*)&s[iter]);
-	while (iter >= 0)
-		if (s[iter--] == c)
-			return ((char*)&s[iter + 1]);
+	if (s)
+	{
+		iter = 0;
+		while (s[iter] != '\0')
+			iter++;
+		if (c == '\0')
+			return ((char*)&s[iter]);
+		while (iter >= 0)
+			if (s[iter--] == c)
+				return ((char*)&s[iter + 1]);
+	}
 	return (NULL);
 }

@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <strings.h>
-# include "libft_bonus.h"
 # define SKIP(value, tester) (value == tester ? 1 : 0)
 
 typedef struct		s_split

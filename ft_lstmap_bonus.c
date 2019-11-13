@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/23 16:59:39 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/12 19:29:13 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 16:06:01 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,29 +15,29 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new;
-	t_list *next;
-	t_list **newptr;
+	t_list	*new;
+	t_list	*next;
+	t_list	*tmp;
 
 	if (!lst || !f)
-		return (NULL);
-	if (!(new = ft_lstnew(f(lst->content))))
-		return (NULL);
-	
-	while (lst)
+		return (0);
+	if ((new = ft_lstnew(f(lst->content))))
 	{
-		next = ft_lstnew(f(lst->content));
-		if (new)
-			new->next = next;
-		else
-		{
-			new = next;
-			new_start = &new;
-		}
+		tmp = new;
 		lst = lst->next;
-		new = new->next;
+		while (lst)
+		{
+			if (!(next = ft_lstnew(f(lst->content))))
+			{
+				ft_lstclear(&new, del);
+				return (new);
+			}
+			tmp->next = next;
+			tmp = tmp->next;
+			lst = lst->next;
+		}
 	}
-	if (del)
+	else
 		ft_lstclear(&new, del);
-	return (*new_start);
+	return (new);
 }

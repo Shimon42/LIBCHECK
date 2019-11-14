@@ -6,56 +6,29 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 21:13:42 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/12 15:29:00 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 17:10:45 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_trmlen(char const *s, char const *set, int dir)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t len;
-	size_t strlen;
+	int		n;
+	char	*res;
 
-	strlen = ft_strlen(s);
-	len = 0;
-	if (dir > 0)
-		while (ft_strchr(set, s[len]) != NULL && len < strlen)
-			len++;
-	else
-	{
-		while (ft_strrchr(set, s[strlen - len - 1]) != NULL && len < strlen - 1)
-			len++;
-	}
-	return (len);
-}
-
-char			*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	trmstrt;
-	size_t	trmend;
-	size_t	i;
-	char	*trmd;
-	size_t	l;
-
-	i = 0;
 	if (!s1 || !set)
-		return (ft_strdup(""));
-	l = ft_strlen(s1);
-	trmstrt = ft_trmlen(s1, set, 1);
-	trmend = ft_trmlen(s1, set, -1);
-	if (trmstrt < l && trmend < l
-	&& (trmd = malloc((l - trmstrt - trmend + 1) * sizeof(char))) != NULL)
-	{
-		while (trmstrt + i < l - trmend)
-		{
-			trmd[i] = (char)s1[trmstrt + i];
-			i++;
-		}
-		trmd[i] = '\0';
-	}
-	else
-		return (ft_strdup(""));
-	return (trmd);
+		return (NULL);
+	n = 0;
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	while (s1[n])
+		n++;
+	n--;
+	while ((n >= 0) && ft_strchr(set, s1[n]))
+		n--;
+	if (!(res = ft_substr(s1, 0, n + 1)))
+		return (NULL);
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 12:28:52 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/03 20:48:26 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 17:03:55 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,19 +61,18 @@ char			*ft_itoa(int n)
 	i = 0;
 	if (n == 0)
 		return (ft_strdup("0"));
-	if ((str = ft_calloc((ft_nbrlen(n) + 1), sizeof(char))) != NULL)
+	if (!(str = ft_calloc((ft_nbrlen(n) + 1), sizeof(char))))
+		return (NULL);
+	if (n < 0)
+		sign = -1;
+	while (n != 0)
 	{
-		if (n < 0)
-			sign = -1;
-		while (n != 0)
-		{
-			str[i] = (n % 10 > 0 ? ('0' + n % 10) : ('0' + (n % 10 * -1)));
-			n = (n - (n % 10)) / 10;
-			i++;
-		}
-		if (sign < 0)
-			str[i++] = '-';
-		ft_strrev(str);
+		str[i] = '0' + ((n % 10) * (n % 10 > 0 ? 1 : -1));
+		n = n / 10;
+		i++;
 	}
+	if (sign < 0)
+		str[i++] = '-';
+	ft_strrev(str);
 	return (str);
 }

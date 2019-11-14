@@ -6,7 +6,7 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 20:30:31 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/03 20:49:30 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 15:55:13 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char		*join;
+	char		*pj;
 	const char	*ps1;
 	const char	*ps2;
-	char		*pj;
 
 	ps1 = s1;
 	ps2 = s2;

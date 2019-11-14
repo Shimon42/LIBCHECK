@@ -47,7 +47,7 @@ SRCSBNS	=	ft_lstnew_bonus.c \
 			ft_lstmap_bonus.c
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 OBJS	= ${SRCS:.c=.o}
 OBJSBNS	= ${SRCSBNS:.c=.o}

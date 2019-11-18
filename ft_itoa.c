@@ -6,73 +6,74 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 12:28:52 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/14 17:03:55 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 16:00:27 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_nbrlen(long n)
+static char		*ft_itoaalloc(unsigned int nbr, int i)
 {
-	long	iter;
+	char *ptr;
 
-	iter = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	if (nbr != 0)
 	{
-		n = -n;
-		iter++;
+		if (!(ptr = malloc((i + 1) * sizeof(char))))
+			return (NULL);
+		ptr[i] = '\0';
 	}
-	while (n > 0)
+	else
 	{
-		n /= 10;
-		iter++;
+		if (!(ptr = malloc((2) * sizeof(char))))
+			return (NULL);
+		ptr[1] = '\0';
+		ptr[0] = '0';
 	}
-	return (iter);
+	return (ptr);
 }
 
-static	char	*ft_strrev(char *str)
+static void		ft_fill(int i, unsigned int nbr,
+						int is_neg, char *ptr)
 {
-	char	temp;
-	int		i;
-	int		length;
+	while (i != 0)
+	{
+		ptr[i - 1] = (nbr % 10 + '0');
+		nbr -= nbr % 10;
+		nbr /= 10;
+		i--;
+		if (is_neg && (i == 1))
+		{
+			i--;
+			ptr[i] = '-';
+		}
+	}
+}
+
+char			*ft_itoa(int nbr)
+{
+	int				i;
+	int				tmp;
+	int				is_neg;
+	char			*ptr;
+	unsigned int	unbr;
 
 	i = 0;
-	length = ft_strlen(str);
-	while (i < length / 2)
+	tmp = nbr;
+	is_neg = 0;
+	unbr = nbr < 0 ? -nbr : nbr;
+	if (nbr < 0)
 	{
-		temp = str[i];
-		str[i] = str[length - i - 1];
-		str[length - i - 1] = temp;
+		is_neg = 1;
+		nbr *= -1;
+	}
+	while (tmp != 0)
+	{
+		tmp /= 10;
 		i++;
 	}
-	return (str);
-}
-
-char			*ft_itoa(int n)
-{
-	char	*str;
-	size_t	i;
-	int		sign;
-
-	sign = 1;
-	i = 0;
-	if (n == 0)
-		return (ft_strdup("0"));
-	if (!(str = ft_calloc((ft_nbrlen(n) + 1), sizeof(char))))
+	if (!(ptr = ft_itoaalloc(unbr, i + is_neg)))
 		return (NULL);
-	if (n < 0)
-		sign = -1;
-	while (n != 0)
-	{
-		str[i] = '0' + ((n % 10) * (n % 10 > 0 ? 1 : -1));
-		n = n / 10;
-		i++;
-	}
-	if (sign < 0)
-		str[i++] = '-';
-	ft_strrev(str);
-	return (str);
+	ft_fill(i + is_neg, unbr, is_neg, ptr);
+	return (ptr);
 }

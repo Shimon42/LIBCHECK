@@ -6,120 +6,99 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 10:50:12 by siferrar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/03 20:48:48 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 15:59:18 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**free_strs(char **strs, int size)
+static int		ft_custom_strlen(const char *s, char c)
 {
-	int	i;
+	int res;
 
-	i = 0;
-	while (i < size)
-		free(strs[i++]);
-	free(strs);
-	return (NULL);
+	res = 0;
+	while (s[res] && (s[res] != c))
+		res++;
+	return (res);
 }
 
-static	int		*part_length(int parts, const char *str, char sep)
+static	char	**ft_nb_part(char const *s, char c, int *len)
 {
-	int *tab;
-	int itab;
-	int i;
+	int		nb_parts;
+	int		i;
+	char	**tab;
 
-	tab = NULL;
 	i = 0;
-	itab = -1;
-	if ((tab = malloc((parts + 2) * sizeof(int))) != NULL)
-		while (str[i] != '\0')
+	nb_parts = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i] != 0)
 		{
-			while (SKIP(str[i], sep) && str[i] != '\0')
+			nb_parts++;
+			while (s[i] != c && s[i] != 0)
 				i++;
-			tab[++itab] = 0;
-			while (!SKIP(str[i], sep) && str[i] != '\0')
-			{
-				tab[itab]++;
-				i++;
-			}
 		}
+	}
+	*len = nb_parts;
+	if (((tab = malloc((nb_parts + 1) * sizeof(char *))) != NULL))
+		tab[nb_parts] = NULL;
+	else
+		return (NULL);
 	return (tab);
 }
 
-static	int		count_parts(const char *str, char sep)
+static void		ft_strcpy(char *dst, const char *src, int c)
 {
-	int count;
 	int i;
 
 	i = 0;
-	count = 0;
-	while (str[i] != '\0')
+	while (src[i] && (src[i] != c))
 	{
-		while (SKIP(str[i], sep) && str[i] != '\0')
-			i++;
-		if (!SKIP(str[i], sep) && str[i] != '\0')
-			count++;
-		while (!SKIP(str[i], sep) && str[i] != '\0')
-			i++;
+		dst[i] = src[i];
+		i++;
 	}
-	return (count);
+	dst[i] = '\0';
 }
 
-static char		**treat_split(t_split *brain, const char *s, char c, char
-**strs)
+static char		**ft_free_tab(char **tab, int len)
 {
-	t_split b;
-
-	b = *brain;
-	if ((strs = malloc((b.nbrparts + 1) * sizeof(char *))) != NULL)
+	while (len >= 0)
 	{
-		while (b.i < b.nbrparts)
-			if ((strs[b.i] = malloc((b.partslen[b.i] + 1) * sizeof(char)))
-				!= NULL)
-			{
-				b.j = 0;
-				while (SKIP(s[b.k], c) && s[b.k] != '\0')
-					b.k++;
-				while ((b.partslen[b.i]--) > 0)
-					strs[b.i][b.j++] = s[b.k++];
-				strs[b.i][b.j] = '\0';
-				while (SKIP(s[b.k], c) && s[b.k] != '\0')
-					b.k++;
-				b.i++;
-			}
-			else
-				return (free_strs(strs, b.i));
-		strs[b.i] = ((char *)NULL);
+		free(tab[len]);
+		len--;
 	}
-	return (strs);
+	free(tab);
+	return (NULL);
 }
 
 char			**ft_split(char const *s, char c)
 {
-	t_split	b;
-	char	**strs;
+	char	**tab;
+	int		i;
+	int		len;
+	int		curr;
+	int		nb_parts;
 
-	if (!c || !s)
+	len = 0;
+	i = 0;
+	curr = 0;
+	if (!s)
+		return (NULL);
+	tab = ft_nb_part(s, c, &nb_parts);
+	while ((i < nb_parts) && tab)
 	{
-		if ((strs = malloc(2 * sizeof(char *))) != NULL)
-		{
-			if (s == NULL)
-				strs[0] = (char*)NULL;
-			else
-				strs[0] = ft_strdup(s);
-			strs[1] = NULL;
-		}
-		return (strs);
+		while (s[curr] == c)
+			curr++;
+		len = ft_custom_strlen(&s[curr], c);
+		if ((tab[i] = malloc(sizeof(char) * (len + 1))) != NULL)
+			ft_strcpy(tab[i], &s[curr], c);
+		else
+			return (ft_free_tab(tab, i));
+		i++;
+		curr += len;
 	}
-	b.i = 0;
-	b.j = 0;
-	b.k = 0;
-	b.nbrparts = count_parts(s, c);
-	b.partslen = part_length(b.nbrparts, s, c);
-	strs = NULL;
-	strs = treat_split(&b, s, c, strs);
-	free(b.partslen);
-	return (strs);
+	return (tab);
 }

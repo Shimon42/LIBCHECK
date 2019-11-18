@@ -6,14 +6,14 @@
 /*   By: siferrar <siferrar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 20:42:44 by shimon       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 18:20:06 by siferrar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 16:06:22 by siferrar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(const char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	if (c >= 0 && fd >= 0)
 		write(fd, &c, 1);
